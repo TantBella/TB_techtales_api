@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace tb_techtales_api.Controllers
 {
     [ApiController]
-    [Route("/[controller]")]
+    [Route("api/[controller]")]
     public class SkillsController : ControllerBase
     {
         private readonly TechTalesApiDbContext _context;
