@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace tb_techtales_api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("/[controller]")]
     public class ProjectsController : ControllerBase
     {
         private readonly TechTalesApiDbContext _context;
@@ -28,6 +28,40 @@ namespace tb_techtales_api.Controllers
             _context.Projects.Add(project);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetProjects), new { id = project.Id }, project);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProject(Guid id, [FromBody] Project updatedProject)
+        {
+            var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == id);
+
+            if (project == null)
+            {
+                return NotFound($"Projekt med id '{id}' hittades inte.");
+            }
+
+            project.Name = updatedProject.Name;
+            project.Description = updatedProject.Description;
+
+            _context.Projects.Update(project);
+            await _context.SaveChangesAsync();
+
+            return Ok($"Projekt med id '{id}' har uppdaterats.");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProjectById(Guid id)
+        {
+            var project = await _context.Projects.FirstOrDefaultAsync(p => p.Id == id);
+
+            if (project == null)
+            {
+                return NotFound($"Projekt med id '{id}' hittades inte.");
+            }
+
+            _context.Projects.Remove(project);
+            await _context.SaveChangesAsync();
+            return Ok($"Projektet med id '{id}' raderades.");
         }
     }
 }

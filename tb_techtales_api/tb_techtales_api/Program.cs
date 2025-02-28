@@ -1,4 +1,7 @@
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using tb_techtales_api.Data;
 using tb_techtales_api.Models;
@@ -17,16 +20,13 @@ namespace tb_techtales_api
                     .GetConnectionString("DefaultConnection"));
             });
 
-
-
             builder.Services.AddAuthorization();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddControllers();
      
             var app = builder.Build();
-
-     
+                 
             app.UseSwagger();
             app.UseSwaggerUI();
 

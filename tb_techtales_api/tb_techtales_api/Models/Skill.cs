@@ -5,8 +5,9 @@
 
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Technology { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty; //jag tänkte ha backend, frontend, db, testning, cloud/övrigt och så ska man kunna kategorisera efter kategori
         public int YearsOfExperience { get; set; }
-        public string Level { get; set; } = string.Empty; //Tech wizard, code ninja, tech enthusiast, code explorer, tech novice-kanske lägga till en beskrivning i mion fe om vad de olika uttrycken står för..?
+        public string Level { get; set; } = string.Empty;
     }
 }
 
