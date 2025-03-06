@@ -1,25 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using tb_techtales_api.Data;
 using tb_techtales_api.Models;
 using Microsoft.EntityFrameworkCore;
+using tb_techtales;
 
 namespace tb_techtales_api.Controllers
 {
     [ApiController]
-    [Route("/[controller]")]
+    [Route("api/[controller]")]
     public class SkillsController : ControllerBase
     {
-        private readonly TechTalesApiDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public SkillsController(TechTalesApiDbContext context)
-        {
+        public SkillsController(ApplicationDbContext context)
+        { 
             _context = context;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetSkills()
         {
-            return Ok(await _context.Skills.ToListAsync());
+            var skills = await _context.Skills.ToListAsync();
+            return Ok(skills);
         }
 
         [HttpPost]

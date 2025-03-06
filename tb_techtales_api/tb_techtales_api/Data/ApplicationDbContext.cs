@@ -9,5 +9,8 @@ namespace tb_techtales
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Project> Projects { get; set; }
     }
 }

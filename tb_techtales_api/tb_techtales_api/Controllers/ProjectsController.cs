@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using tb_techtales_api.Data;
 using tb_techtales_api.Models;
 using Microsoft.EntityFrameworkCore;
+using tb_techtales;
 
 namespace tb_techtales_api.Controllers
 {
     [ApiController]
-    [Route("/[controller]")]
+    [Route("api/[controller]")]
     public class ProjectsController : ControllerBase
     {
-        private readonly TechTalesApiDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public ProjectsController(TechTalesApiDbContext context)
+        public ProjectsController(ApplicationDbContext context)
+            
         {
             _context = context;
         }

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using tb_techtales;
-using tb_techtales_api.Data;
 using tb_techtales_api.Models;
 
 namespace tb_techtales_api

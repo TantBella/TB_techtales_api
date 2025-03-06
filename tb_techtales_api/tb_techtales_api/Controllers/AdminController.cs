@@ -18,7 +18,31 @@ namespace tb_techtales_api.Controllers
             _userManager = userManager;
         }
 
-        [HttpPost("Login")]
+
+        [HttpPost("CreateUser")]
+        public async Task<IActionResult> CreateUser([FromBody] PostUser postUser)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = postUser.Username, Email = postUser.Email };
+                var result = await _userManager.CreateAsync(user, postUser.Password);
+
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return Ok("Användaren skapades och inloggades.");
+                }
+                else
+                {
+                    return BadRequest("Kunde inte skapa användaren: " + string.Join(", ", result.Errors));
+                }
+            }
+            return BadRequest("Ogiltiga data.");
+        }
+    
+
+
+[HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             if (ModelState.IsValid)
