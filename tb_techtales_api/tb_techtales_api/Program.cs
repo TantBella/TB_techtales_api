@@ -20,12 +20,12 @@ namespace tb_techtales_api
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            builder.Services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = "/Admin/Login"; 
-                options.LogoutPath = "/"; 
-                options.AccessDeniedPath = "/Admin/AccessDenied"; 
-            });
+            //builder.Services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.LoginPath = "/Admin/Login"; 
+            //    options.LogoutPath = "/"; 
+            //    options.AccessDeniedPath = "/Admin/AccessDenied"; 
+            //});
 
             builder.Services.AddAuthorization();
             builder.Services.AddEndpointsApiExplorer();
