@@ -43,6 +43,7 @@ namespace tb_techtales_api.Controllers
 
             project.Name = updatedProject.Name;
             project.Description = updatedProject.Description;
+            project.GithubLink = updatedProject.GithubLink;
 
             _context.Projects.Update(project);
             await _context.SaveChangesAsync();

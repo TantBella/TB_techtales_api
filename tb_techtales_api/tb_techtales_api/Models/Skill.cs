@@ -2,7 +2,6 @@
 {
     public class Skill
     {
-
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Technology { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty; //jag tänkte ha backend, frontend, db, testning, cloud/övrigt och så ska man kunna kategorisera efter kategori
